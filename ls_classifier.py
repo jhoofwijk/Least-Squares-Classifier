@@ -1,4 +1,4 @@
-from mnist import MNIST
+import mnist
 import sklearn.metrics as metrics
 import numpy as np
 
@@ -6,9 +6,16 @@ NUM_CLASSES = 10
 
 
 def load_dataset():
-    mndata = MNIST('./data/')
-    X_train, labels_train = map(np.array, mndata.load_training())
-    X_test, labels_test = map(np.array, mndata.load_testing())
+    X_train = mnist.train_images()
+    X_train = X_train.reshape(-1, 28*28)
+    
+    labels_train = mnist.train_labels()
+    
+    X_test = mnist.test_images()
+    X_test.reshape(-1, 28*28)
+    labels_test = mnist.test_labels()
+    
+    
     X_train = X_train/255.0
     X_test = X_test/255.0
     X_train = X_train[:,:,np.newaxis]
