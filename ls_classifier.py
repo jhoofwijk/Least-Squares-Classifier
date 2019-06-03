@@ -12,7 +12,7 @@ def load_dataset():
     labels_train = mnist.train_labels()
     
     X_test = mnist.test_images()
-    X_test.reshape(-1, 28*28)
+    X_test = X_test.reshape(-1, 28*28)
     labels_test = mnist.test_labels()
     
     
